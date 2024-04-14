@@ -10,6 +10,9 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
+
+  TextEditingController _passwordTextController = TextEditingController();
+   TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +26,24 @@ class _SigninState extends State<Signin> {
           hexStringToColor("5E61F4")
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: SingleChildScrollView(
-            child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    20, MediaQuery.of(context).size.height * 0.2, 20, 0),
-                child: Column(children: <Widget>[
-                  logWidget("assets/images/image.png"),
-                ]))),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                20, MediaQuery.of(context).size.height * 0.2, 20, 0),
+            child: Column(
+              children: <Widget>[
+                logWidget("assets/images/image.png"),
+                SizedBox(
+                  height: 30,
+                ),
+                reusableTextFild("Usuário", Icons.person_outline, false, _emailTextController),
+                SizedBox(
+                  height: 30,
+                ),
+                reusableTextFild("Senha", Icons.password, false, _emailTextController),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
