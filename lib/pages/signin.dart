@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pi/pages/signup.dart';
 import 'package:pi/reusable_widget/reusable_widget.dart';
 import 'package:pi/utils/color_utils.dart';
 
@@ -10,9 +11,8 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
-
-  TextEditingController _passwordTextController = TextEditingController();
-   TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,16 +35,45 @@ class _SigninState extends State<Signin> {
                 SizedBox(
                   height: 30,
                 ),
-                reusableTextFild("Usuário", Icons.person_outline, false, _emailTextController),
+                reusableTextFild("Usuário", Icons.person_outline, false,
+                    _emailTextController),
                 SizedBox(
                   height: 30,
                 ),
-                reusableTextFild("Senha", Icons.password, false, _emailTextController),
+                reusableTextFild(
+                    "Senha", Icons.password, false, 
+                    _passwordTextController),
+                SizedBox(
+                  height: 30,
+                ),
+                signInSignUpButton(context, true, () {}),
+                signUpOption()
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Row signUpOption() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Não tem uma conta?",
+          style: TextStyle(color: Colors.white70),
+        ),
+        GestureDetector(onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const SignUpScreen()));
+        },
+        child: const Text(
+          "Cadastre-se",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        )
+      ],
     );
   }
 }
