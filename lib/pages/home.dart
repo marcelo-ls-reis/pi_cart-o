@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pi/pages/signin.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,10 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Center(
       child: ElevatedButton(
-        child: Text("Sair"),
+        child: const Text("Sair"),
         onPressed: () {
           Navigator.push(context, 
-          MaterialPageRoute(builder: (context) => const SignInScreen()));
+          MaterialPageRoute(builder: (context) => const Signin()));
         },
        ),
       ),

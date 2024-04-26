@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "402643615494",
+    "project_id": "sigin-f969c",
+    "storage_bucket": "sigin-f969c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402643615494:android:2e8553bf9b1a6d0dc22887",
+        "android_client_info": {
+          "package_name": "com.example.pi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiMPn0vxFU712pgnvxY5xbLdJ1pf4P5eI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

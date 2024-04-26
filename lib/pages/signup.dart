@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pi/pages/home.dart';
+import 'package:pi/reusable_widget/reusable_widget.dart';
 import 'package:pi/utils/color_utils.dart';
 
 class SignUpScreen extends StatefulWidget {
+
   const SignUpScreen({super.key});
 
   @override
@@ -9,6 +12,10 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
+  final TextEditingController _userNameTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,39 +37,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
           hexStringToColor("9546C4"),
           hexStringToColor("5E61F4")
         ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-        // child: SingleChildScrollView(
-        //     child: Padding(
-        //   padding: EdgeInsets.fromLTRB(
-        //       20, MediaQuery.of(context).size.height * 0.2, 20, 0),
-        //   child: Column(
-        //     children: <Widget>[
-        //       const SizedBox(
-        //         height: 20,
-        //       ),
-        //       reusableTextFild("Enter Usuário", Icons.person_outline, false,
-        //           _userNameTextController),
-        //       const SizedBox(
-        //         height: 20,
-        //       ),
-        //       reusableTextFild("Enter Usuário", Icons.person_outline, false,
-        //           _emailTextController),
-        //       const SizedBox(
-        //         height: 20,
-        //       ),
-        //       reusableTextFild("Enter Usuário", Icons.password, false,
-        //           _passwordTextController),
-        //       const SizedBox(
-        //         height: 20,
-        //       ),
-        //       signInSignUpButton(context, false, () {
-        //         Navigator.push(
-        //             context,
-        //             MaterialPageRoute(
-        //                 builder: (context) => const HomeScreen()));
-        //       }),
-        //     ],
-        //   ),
-        // )),
+        child: SingleChildScrollView(
+            child: Padding(
+          padding: EdgeInsets.fromLTRB(
+              20, MediaQuery.of(context).size.height * 0.1, 20, 0),
+          child: Column(
+            children: <Widget>[
+              const SizedBox(
+                height: 20,
+              ),
+              reusableTextFild("Enter Usuário", Icons.person_outline, false,
+                  _userNameTextController),
+              const SizedBox(
+                height: 20,
+              ),
+              reusableTextFild("Enter Email", Icons.person_outline, false,
+                  _emailTextController),
+              const SizedBox(
+                height: 20,
+              ),
+              reusableTextFild("Enter Senha", Icons.password, true,
+                  _passwordTextController),
+              const SizedBox(
+                height: 20,
+              ),
+              signInSignUpButton(context, false, () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
+              }),
+            ],
+          ),
+        )),
       ),
     );
   }
