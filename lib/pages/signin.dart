@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pi/pages/home.dart';
+import 'package:pi/pages/formulario_model.dart';
 import 'package:pi/pages/signup.dart';
 import 'package:pi/reusable_widget/reusable_widget.dart';
 import 'package:pi/utils/color_utils.dart';
@@ -49,7 +49,7 @@ class _SigninState extends State<Signin> {
                 ),
                 signInSignUpButton(context, true, () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()));
+                      MaterialPageRoute(builder: (context) => const FormularioModel()));
                 }),
                 signUpOption()
               ],
@@ -70,7 +70,7 @@ class _SigninState extends State<Signin> {
         ),
         GestureDetector(onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SignUpScreen()));
+              MaterialPageRoute(builder: (context) => const SignUpScreen()));
         },
         child: const Text(
           "Cadastre-se",
