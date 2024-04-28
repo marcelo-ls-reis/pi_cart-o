@@ -1,10 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pi/pages/home.dart';
 import 'package:pi/reusable_widget/reusable_widget.dart';
 import 'package:pi/utils/color_utils.dart';
 
 class SignUpScreen extends StatefulWidget {
-
   const SignUpScreen({super.key});
 
   @override
@@ -12,7 +13,6 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-
   final TextEditingController _userNameTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
@@ -46,27 +46,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(
                 height: 20,
               ),
-              reusableTextFild("Enter Usuário", Icons.person_outline, false,
+              reusableTextFild("Entre com o Usuário", Icons.person_outline, false,
                   _userNameTextController),
               const SizedBox(
                 height: 20,
               ),
-              reusableTextFild("Enter Email", Icons.person_outline, false,
+              reusableTextFild("Entre com o Email", Icons.person_outline, false,
                   _emailTextController),
               const SizedBox(
                 height: 20,
               ),
-              reusableTextFild("Enter Senha", Icons.password, true,
-                  _passwordTextController),
+              reusableTextFild(
+                  "Entre com a Senha", Icons.password, true, _passwordTextController),
               const SizedBox(
                 height: 20,
               ),
               signInSignUpButton(context, false, () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
-              }),
+                FirebaseAuth.instance
+                    .createUserWithEmailAndPassword(
+                        email: _emailTextController.text,
+                        password: _passwordTextController.text)
+                    .then((value) {
+                      if (kDebugMode) {
+                        print("Criou o usuário com sucesso");
+                      }
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()));     
+              }).onError((error, stackTrace) {
+                if (kDebugMode) {
+                  print("Error: ${error.toString()}");
+                }
+              });
+              })
             ],
           ),
         )),
