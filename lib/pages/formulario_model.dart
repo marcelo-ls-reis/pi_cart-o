@@ -17,10 +17,10 @@ class FormularioModel extends StatefulWidget {
 }
 
 class _FormularioState extends State<FormularioModel> {
-  String dropdownValue1 = 'Sem saldo ou debito';
-  String dropdownValue2 = '6';
-  String dropdownValue3 = 'Sem créditos anteriores ou todos pagos';
-  String dropdownValue4 = 'Carro novo';
+  String dropdownValue1 = 'Masculino';
+  String dropdownValue2 = 'Sim';
+  String dropdownValue3 = 'Sim';
+  String dropdownValue4 = 'um';
   String dropdownValue5 = '500';
   String dropdownValue6 = '100';
   String dropdownValue7 = 'Desenpregado';
@@ -36,48 +36,28 @@ class _FormularioState extends State<FormularioModel> {
   String dropdownValue17 = 'Desempregado/não qualificado sem residência permanente';
   String dropdownValue18 = '0 a 2 anos';
   String dropdownValue19 = 'Não';
-  String dropdownValue20 = 'Não';
 
   final Map<String, dynamic> dropdownValuesMap1 = {
-    'Sem saldo ou debito': 2,
-    '0 a 200 Reais': 3,
-    '200 Reais ou conta corrente por pelo menos 1 ano': 4,
-    'Sem conta de execução': 1,
+    'Masculino': 1,
+    'Feminino': 2,
   };
 
   final Map<String, dynamic> dropdownValuesMap2 = {
-    '6': 10,
-    '6 a 12': 9,
-    '12 18': 8,
-    '18 a 24': 7,
-    '24 a 30': 6,
-    '30 a 36': 5,
-    '36 a 42': 4,
-    '42 a 48': 3,
-    '48 a 54': 2,
-    '54': 1,
+    'Sim': 1,
+    'Não': 2,
   };
 
   final Map<String, dynamic> dropdownValuesMap3 = {
-    'Sem créditos anteriores ou todos pagos': 2,
-    'Pagos os créditos anteriores neste banco': 4,
-    'Sem problemas com créditos neste banco': 3,
-    'Pagamento hesitante de créditos anteriores': 0,
-    'Conta problemática ou há outros créditos em outros bancos': 1,
+    'Sim': 1,
+    'Não': 2,
   };
 
   final Map<String, dynamic> dropdownValuesMap4 = {
-    'Carro novo': 1,
-    'Carro usado': 2,
-    'Itens de mobiliário': 3,
-    'Rádio / televisão': 4,
-    'Eletrodomésticos': 5,
-    'Reparação': 6,
-    'Educação': 7,
-    'Férias': 8,
-    'Reciclagem': 9,
-    'Negócios': 10,
-    'Outros': 0,
+    'um': 1,
+    'dois': 2,
+    'três': 3,  
+    'quatro': 4,
+    'cinco': 5,
   };
 
   final Map<String, dynamic> dropdownValuesMap5 = {
@@ -187,10 +167,6 @@ class _FormularioState extends State<FormularioModel> {
     'Sim': 2,
   };
 
-  final Map<String, dynamic> dropdownValuesMap20 = {
-    'Não': 1,
-    'Sim': 2,
-  };
 
   Map<String, dynamic> createJsonBody() {
     return {
@@ -232,8 +208,6 @@ class _FormularioState extends State<FormularioModel> {
       'selectedValue18': dropdownValuesMap18[dropdownValue18],
       '\ndropdownValue19': dropdownValue19,
       'selectedValue19': dropdownValuesMap19[dropdownValue19],
-      'dropdownValue20': dropdownValue20,
-      'selectedValue20': dropdownValuesMap20[dropdownValue20],
     };
   }
 
@@ -264,6 +238,7 @@ class _FormularioState extends State<FormularioModel> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Analisar Crédito'),
+        backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -272,7 +247,7 @@ class _FormularioState extends State<FormularioModel> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // primeiro dropdown
-              const Text("Saldo em conta corrente"),
+              const Text("Genero?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -303,7 +278,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // segundo dropdown
-              const Text("Duração do crédito em meses"),
+              const Text("Possui Veículo?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -334,7 +309,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // terceiro dropdown
-              const Text("Histórico de crédito"),
+              const Text("Possui imóvel?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -365,7 +340,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // quarto dropdown
-              const Text("Propósito do crédito"),
+              const Text("Quantidade de filhos?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -396,7 +371,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // quinto dropdown
-              const Text("Valor do crédito"),
+              const Text("Renda anual?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -427,7 +402,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // sexto dropdown
-              const Text("Savings account/bonds"),
+              const Text("Categoria de renda?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -458,7 +433,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // sétimo dropdown
-              const Text("Tempo de emprego atual"),
+              const Text("Nivel de escolaridade?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -489,7 +464,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // oitavo dropdown
-              const Text("Idade"),
+              const Text("Estado civil?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -520,7 +495,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // nono dropdown
-              const Text("Estado civil e sexo"),
+              const Text("Reside em imovel próprio?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -552,7 +527,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo dropdown
-              const Text("Número de dependentes"),
+              const Text("Idade?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -584,7 +559,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo primeiro dropdown
-              const Text("Duração do emprego atual"),
+              const Text("Tempo de emprego?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -616,7 +591,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo segundo dropdown
-              const Text("Tipo de propriedade"),
+              const Text("Possui celular?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -648,7 +623,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo terceiro dropdown
-              const Text("Idade (anos)"),
+              const Text("Possui telefone comercial?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -680,7 +655,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo quarto dropdown
-              const Text("Outros créditos pendentes"),
+              const Text("Possui telefone fixo?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -712,7 +687,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo quinto dropdown
-              const Text("Tipo de moradia"),
+              const Text("Possui email?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -744,7 +719,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo sexto dropdown
-              const Text("Número de créditos existentes neste banco"),
+              const Text("Ocupação?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -776,7 +751,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo sétimo dropdown
-              const Text("Tipo de emprego e nível de qualificação"),
+              const Text("Quantidade de menbros da famílha?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -811,7 +786,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo oitavo dropdown
-              const Text("Número de créditos existentes neste banco"),
+              const Text("Mês de registro?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -846,7 +821,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo nono dropdown
-              const Text("Possui garantia de terceiros?"),
+              const Text("Status?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -873,41 +848,6 @@ class _FormularioState extends State<FormularioModel> {
                       onChanged: (String? newValue) {
                         setState(() {
                           dropdownValue19 = newValue!;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20.0),
-              // vigésimo dropdown
-              const Text("Possui garantia de terceiros?"),
-              const SizedBox(height: 8.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width - 20.0,
-                    ),
-                    padding: const EdgeInsets.all(5.0),
-                    decoration: CustomDropdownStyle.dropdownDecoration(),
-                    child: DropdownButton<String>(
-                      isExpanded: true,
-                      value: dropdownValue20,
-                      items: dropdownValuesMap20.entries
-                          .map((MapEntry<String, dynamic> entry) {
-                        return DropdownMenuItem<String>(
-                          value: entry.key,
-                          child: Text(
-                            entry.key,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownValue20 = newValue!;
                         });
                       },
                     ),

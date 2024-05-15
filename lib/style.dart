@@ -7,14 +7,14 @@ class CustomDropdownStyle {
     return BoxDecoration(
       boxShadow: [
         BoxShadow(
-          color: const Color.fromARGB(255, 173, 238, 121).withOpacity(0.5),
+          color: const Color.fromARGB(255, 59, 59, 59).withOpacity(0.5),
           spreadRadius: 0.5,
           blurRadius: 0.5,
           offset: const Offset(0, 0.5),
         ),
       ],
       border: Border.all(
-        color: Colors.grey,
+        color: const Color.fromARGB(255, 0, 0, 0),
         style: BorderStyle.solid,
         width: 0.80,
       ),
