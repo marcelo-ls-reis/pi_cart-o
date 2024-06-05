@@ -1,4 +1,4 @@
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pi/pages/home.dart';
 import 'package:pi/style.dart';
@@ -17,12 +17,13 @@ class FormularioModel extends StatefulWidget {
 }
 
 class _FormularioState extends State<FormularioModel> {
-
   final TextEditingController _rendaController = TextEditingController();
   final TextEditingController _idadeController = TextEditingController();
-  final TextEditingController _diasEmpregadoController = TextEditingController();
+  final TextEditingController _diasEmpregadoController =
+      TextEditingController();
   final TextEditingController _saldoMesesController = TextEditingController();
-  final TextEditingController _membrosFamiliaController = TextEditingController();
+  final TextEditingController _membrosFamiliaController =
+      TextEditingController();
 
   String dropdownValue1 = 'Masculino';
   String dropdownValue2 = 'Sim';
@@ -61,7 +62,7 @@ class _FormularioState extends State<FormularioModel> {
   final Map<String, dynamic> dropdownValuesMap4 = {
     'um': 1,
     'dois': 2,
-    'três': 3,  
+    'três': 3,
     'quatro': 4,
     'cinco': 5,
   };
@@ -117,7 +118,7 @@ class _FormularioState extends State<FormularioModel> {
   };
 
   final Map<String, dynamic> dropdownValuesMap13 = {
-   'Sim': 1,
+    'Sim': 1,
     'Não': 2,
   };
 
@@ -159,7 +160,6 @@ class _FormularioState extends State<FormularioModel> {
     '3 ou mais anos': 1,
   };
 
-
   Map<String, dynamic> createJsonBody() {
     return {
       'dropdownValue1': dropdownValue1,
@@ -179,7 +179,7 @@ class _FormularioState extends State<FormularioModel> {
       '\ndropdownValue8': dropdownValue8,
       'selectedValue8': dropdownValuesMap8[dropdownValue8],
       '\ndropdownValue9': dropdownValue9,
-      'nselectedValue9': dropdownValuesMap9[dropdownValue9],
+      'selectedValue9': dropdownValuesMap9[dropdownValue9],
       '\ndropdownValue10': dropdownValue10,
       'selectedValue10': dropdownValuesMap10[dropdownValue10],
       '\ndropdownValue11': dropdownValue11,
@@ -201,33 +201,11 @@ class _FormularioState extends State<FormularioModel> {
     };
   }
 
-// Função para enviar o corpo JSON para o servidor
-  // Future<void> sendJsonBody() async {
-  //   final url = Uri.parse('http://jsonplaceholder.typicode.com/post');
-  //   final headers = {'Content-Type': 'application/json'};
-  //   final Map<String, dynamic> jsonBody = createJsonBody();
-  //   final String body = json.encode(jsonBody);
-
-  //   // Imprime o JSON formatado
-  //   if (kDebugMode) {
-  //     print('JSON enviado:');
-  //     print(jsonBody);
-  //   }
-
-  //   final response = await post(url, headers: headers, body: body);
-
-  //   // Analise a resposta aqui para determinar se foi bem-sucedida ou não.
-  //   if (kDebugMode) {
-  //     print('Resposta do servidor:');
-  //     print(response.body);
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dados para analisar Crédito'),
+        title: const Text('Formulário de analise de Crédito'),
         backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
@@ -364,33 +342,33 @@ class _FormularioState extends State<FormularioModel> {
               const Text("Renda"),
               const SizedBox(height: 8.0),
               Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width - 20.0,
-                  ),
-                  padding: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: TextField(
-                    controller: _rendaController,
-                    decoration: const InputDecoration(
-                      hintText: 'Insira o valor da renda',
-                      border: InputBorder.none,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue5 = newValue;
-                      });
-                    },
+                    padding: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: TextField(
+                      controller: _rendaController,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira o valor da renda',
+                        border: InputBorder.none,
+                      ),
+                      keyboardType: TextInputType.number,
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownValue5 = newValue;
+                        });
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
               const SizedBox(height: 20.0),
               // sexto dropdown
               const Text("Tipo de renda?"),
@@ -648,66 +626,66 @@ class _FormularioState extends State<FormularioModel> {
               // décimo quarto dropdown
               const Text("Membros da familha?"),
               const SizedBox(height: 8.0),
-             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width - 20.0,
-                  ),
-                  padding: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: TextField(
-                    controller: _membrosFamiliaController,
-                    decoration: const InputDecoration(
-                      hintText: 'Insira o número de membros da família',
-                      border: InputBorder.none,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue5 = newValue;
-                      });
-                    },
+                    padding: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: TextField(
+                      controller: _membrosFamiliaController,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira o número de membros da família',
+                        border: InputBorder.none,
+                      ),
+                      keyboardType: TextInputType.number,
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownValue14 = newValue;
+                        });
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
               const SizedBox(height: 20.0),
               // décimo quinto dropdown
               const Text("Saldo meses?"),
               const SizedBox(height: 8.0),
               Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width - 20.0,
-                  ),
-                  padding: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: TextField(
-                    controller: _saldoMesesController,
-                    decoration: const InputDecoration(
-                      hintText: 'Insira saldo mensal',
-                      border: InputBorder.none,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue5 = newValue;
-                      });
-                    },
+                    padding: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: TextField(
+                      controller: _saldoMesesController,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira saldo mensal',
+                        border: InputBorder.none,
+                      ),
+                      keyboardType: TextInputType.number,
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownValue15 = newValue;
+                        });
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
               const SizedBox(height: 20.0),
               // décimo sexto dropdown
               const Text("Status?"),
@@ -745,74 +723,83 @@ class _FormularioState extends State<FormularioModel> {
               const Text("Idade?"),
               const SizedBox(height: 8.0),
               Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width - 20.0,
-                  ),
-                  padding: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: TextField(
-                    controller: _idadeController,
-                    decoration: const InputDecoration(
-                      hintText: 'Insira sua idade',
-                      border: InputBorder.none,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue5 = newValue;
-                      });
-                    },
+                    padding: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: TextField(
+                      controller: _idadeController,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira sua idade',
+                        border: InputBorder.none,
+                      ),
+                      keyboardType: TextInputType.number,
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownValue17 = newValue;
+                        });
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
               const SizedBox(height: 20.0),
               // décimo oitavo dropdown
               const Text("Dias empregado?"),
               const SizedBox(height: 8.0),
               Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width - 20.0,
-                  ),
-                  padding: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: TextField(
-                    controller: _diasEmpregadoController,
-                    decoration: const InputDecoration(
-                      hintText: 'Insira quantos dias empregado',
-                      border: InputBorder.none,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue5 = newValue;
-                      });
-                    },
+                    padding: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: TextField(
+                      controller: _diasEmpregadoController,
+                      decoration: const InputDecoration(
+                        hintText: 'Insira quantos dias empregado',
+                        border: InputBorder.none,
+                      ),
+                      keyboardType: TextInputType.number,
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownValue18 = newValue;
+                        });
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
+                  // Handle form submission
+                  Map<String, dynamic> jsonBody = createJsonBody();
+                  if (kDebugMode) {
+                    print(jsonBody);
+                  }
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  const HomeScreen()),
-                  );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()));
                 },
-                child: const Text('Enviar Dados'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 15.0),
+                ),
+                child: const Text('Submit'),
               ),
             ],
           ),

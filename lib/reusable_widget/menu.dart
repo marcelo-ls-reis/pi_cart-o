@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pi/pages/about.dart';
+import 'package:pi/pages/formulario_model.dart';
 import 'package:pi/pages/signin.dart';
 import 'package:pi/pages/signup.dart';
 
@@ -56,10 +57,14 @@ class Menu extends StatelessWidget {
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            leading: const Icon(Icons.exit_to_app),
-            title: const Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Formulário de Analise'),
+              onTap: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FormularioModel())),
+                  }),
         ],
       ),
     );
