@@ -15,7 +15,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: const Menu(),
       appBar: AppBar(
-        title: const Text('IA ANALISE DE CREDITO'), 
+        title: const Text('IDEIA ANALISE DE CREDITO'), 
+        titleTextStyle: const TextStyle(
+          color: Colors.black,
+          fontSize: 20,
+          fontFamily: 'Arial',  
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0, 
       ),

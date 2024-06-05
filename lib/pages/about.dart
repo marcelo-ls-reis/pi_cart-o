@@ -21,6 +21,7 @@ class _AboutScreenState extends State<AboutScreen> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage("assets/images/techno.jpg"), fit: BoxFit.fill),
             gradient: LinearGradient(colors: [
           Color(0xFFCB2B93),
           Color(0xFF9546C4),
@@ -34,7 +35,7 @@ class _AboutScreenState extends State<AboutScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "IA Análise de Crédito",
+                  "IDEIA Análise de Crédito",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -48,11 +49,30 @@ class _AboutScreenState extends State<AboutScreen> {
                   ),
                 ),
                 Text(
-                  "PI - Projeto Integrador desenvolvido por Marcelo Luiz Siqueira Reis, Elivelto e João Paulo Alunos do 6º período do curso DSM - Desenvolvimento de Software Multiplataforma da FATEC Franca/SP",
+                  "PI - Projeto Integrador - Fatec Franca",
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "Alunos:",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "Marcelo Reis, Elivelto Silva e João Paulo",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
