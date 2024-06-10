@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pi/pages/about.dart';
+import 'package:pi/pages/credit_card_form.dart';
 import 'package:pi/pages/formulario_model.dart';
 import 'package:pi/pages/signin.dart';
 import 'package:pi/pages/signup.dart';
@@ -53,8 +54,8 @@ class Menu extends StatelessWidget {
                   }),
           ListTile(
             leading: const Icon(Icons.border_color),
-            title: const Text('Feedback'),
-            onTap: () => {Navigator.of(context).pop()},
+            title: const Text('Gerar Cartão de Crédito'),
+            onTap: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => const CreditCardForm()))},
           ),
           ListTile(
               leading: const Icon(Icons.exit_to_app),
