@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:pi/pages/home.dart';
+import 'package:pi/pages/analise.dart';
 import 'package:pi/style.dart';
 
 class FormularioModel extends StatefulWidget {
@@ -17,32 +17,24 @@ class FormularioModel extends StatefulWidget {
 }
 
 class _FormularioState extends State<FormularioModel> {
-  final TextEditingController _rendaController = TextEditingController();
-  final TextEditingController _idadeController = TextEditingController();
-  final TextEditingController _diasEmpregadoController =
-      TextEditingController();
-  final TextEditingController _saldoMesesController = TextEditingController();
-  final TextEditingController _membrosFamiliaController =
-      TextEditingController();
 
   String dropdownValue1 = 'Masculino';
   String dropdownValue2 = 'Sim';
   String dropdownValue3 = 'Sim';
   String dropdownValue4 = 'um';
-  String dropdownValue5 = 'Entre 10000,00 e 15000,00';
-  String dropdownValue6 = 'Trabalhando';
-  String dropdownValue7 = 'Secundário/Secundário especializado';
-  String dropdownValue8 = 'Casado';
-  String dropdownValue9 = 'Casa/apartamento';
+  String dropdownValue5 = 'Trabalhando';
+  String dropdownValue6 = 'Secundário/Secundário especializado';
+  String dropdownValue7 = 'Casado';
+  String dropdownValue8 = 'Casa/apartamento';
+  String dropdownValue9 = 'Sim';
   String dropdownValue10 = 'Sim';
   String dropdownValue11 = 'Sim';
   String dropdownValue12 = 'Sim';
-  String dropdownValue13 = 'Sim';
-  String dropdownValue14 = '1';
-  String dropdownValue15 = 'Entre 1000,00 e 2000,00';
-  String dropdownValue16 = 'Ativo';
-  String dropdownValue17 = '18 a 21 anos';
-  String dropdownValue18 = '0 a 2 anos';
+  String dropdownValue13 = '1';
+  String dropdownValue14 = 'Até 21 anos';
+  String dropdownValue15 = 'Até 500k';
+  String dropdownValue16 = 'Desempregado';
+  String dropdownValue17 = 'Nenhum mês empregado';
 
   final Map<String, dynamic> dropdownValuesMap1 = {
     'Masculino': 1,
@@ -68,38 +60,37 @@ class _FormularioState extends State<FormularioModel> {
   };
 
   final Map<String, dynamic> dropdownValuesMap5 = {
-    'Entre 10000,00 e 15000,00': 1,
-    'Entre 15000,00 e 20000,00': 2,
-    'Entre 20000,00 e 25000,00': 3,
-    'Maior que 25000,00': 4,
-  };
-
-  final Map<String, dynamic> dropdownValuesMap6 = {
     'Trabalhando': 1,
     'Associado comercial': 2,
     'Pensoinista': 3,
     'Servidor público': 4,
   };
 
-  final Map<String, dynamic> dropdownValuesMap7 = {
+  final Map<String, dynamic> dropdownValuesMap6 = {
     'Secundário/Secundário especializado': 1,
     'Ensino superior': 2,
     'Superior incompleto': 3,
   };
 
-  final Map<String, dynamic> dropdownValuesMap8 = {
+  final Map<String, dynamic> dropdownValuesMap7 = {
     'Casado': 1,
     'Casado civilmente': 2,
     'Solteiro': 3,
     'Separado': 4,
+    'Viúvo': 5,
   };
 
-  final Map<String, dynamic> dropdownValuesMap9 = {
+  final Map<String, dynamic> dropdownValuesMap8 = {
     'Casa/apartamento': 1,
     'Apartamento alugado': 2,
     'Com os pais': 3,
     'Apartamento cooperativo': 4,
     'Apartamento municipal': 5,
+  };
+
+  final Map<String, dynamic> dropdownValuesMap9 = {
+    'Sim': 1,
+    'Não': 2,
   };
 
   final Map<String, dynamic> dropdownValuesMap10 = {
@@ -117,12 +108,7 @@ class _FormularioState extends State<FormularioModel> {
     'Não': 2,
   };
 
-  final Map<String, dynamic> dropdownValuesMap13 = {
-    'Sim': 1,
-    'Não': 2,
-  };
-
-  final Map<String, dynamic> dropdownValuesMap14 = {
+ final Map<String, dynamic> dropdownValuesMap13 = {
     '1': 1,
     '2': 2,
     '3': 3,
@@ -130,34 +116,43 @@ class _FormularioState extends State<FormularioModel> {
     '5': 5,
   };
 
+  final Map<String, dynamic> dropdownValuesMap14 = {
+    'Até 21 anos': 1,
+    '22 a 30 anos': 2,
+    '31 a 40 anos': 3,
+    '41 a 50 anos': 4,
+    '51 a 60 anos': 5,
+  };
+
   final Map<String, dynamic> dropdownValuesMap15 = {
-    'Entre 1000,00 e 2000,00': 1,
-    'Entre 2000,00 e 3000,00': 2,
-    'Entre 3000,00 e 4000,00': 3,
-    'Maior que 4000,00': 4,
+    'Até 500k': 1,
+    '500k a 650k': 2,
+    '650k a 800k': 3,
+    '800k a 950k': 4,
+    '950k a 1100k': 5,
+    '1100k a 1250k': 6,
+    '1250k a 1400k': 7,
+    '1400k a 5000k': 8,
   };
 
   final Map<String, dynamic> dropdownValuesMap16 = {
-    'Ativo': 1,
-    'Inativo': 2,
+    'Desempregado': 1,
+    'Até 5 ano': 2,
+    '6 a 10 anos': 3,
+    '11 a 20 anos': 4,
+    '21 a 30 anos': 5,
+    '31 a 40 anos': 6,
+    'Acima de 40 anos': 7,
   };
 
-  final Map<String, dynamic> dropdownValuesMap17 = {
-    '18 a 21 anos': 1,
-    '22 a 25 anos': 2,
-    '26 a 30 anos': 3,
-    '31 a 35 anos': 4,
-    '36 a 40 anos': 5,
-  };
-
-  final Map<String, dynamic> dropdownValuesMap18 = {
-    '0 a 2 anos': 2,
-    '3 ou mais anos': 1,
-  };
-
-  final Map<String, dynamic> dropdownValuesMap19 = {
-    '0 a 2 anos': 2,
-    '3 ou mais anos': 1,
+  
+   final Map<String, dynamic> dropdownValuesMap17 = {
+    'Nenhum mês empregado': 1,
+    '1 a 12 meses': 2,
+    '13 a 23 meses': 3,
+    '24 a 35 meses': 4,
+    '36 a 47 meses': 5,
+    'Acima de 48 meses': 6,
   };
 
   Map<String, dynamic> createJsonBody() {
@@ -196,8 +191,6 @@ class _FormularioState extends State<FormularioModel> {
       'selectedValue16': dropdownValuesMap16[dropdownValue16],
       '\ndropdownValue17': dropdownValue17,
       'selectedValue17': dropdownValuesMap17[dropdownValue17],
-      '\ndropdownValue18': dropdownValue18,
-      'selectedValue18': dropdownValuesMap18[dropdownValue18],
     };
   }
 
@@ -277,7 +270,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // terceiro dropdown
-              const Text("Possui casa própia?"),
+              const Text("Possui imóvel própia?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -308,7 +301,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // quarto dropdown
-              const Text("Filhos?"),
+              const Text("Número de filhos?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -339,7 +332,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // quinto dropdown
-              const Text("Renda"),
+              const Text("Tipo de renda?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -349,29 +342,28 @@ class _FormularioState extends State<FormularioModel> {
                       maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
                     padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: TextField(
-                      controller: _rendaController,
-                      decoration: const InputDecoration(
-                        hintText: 'Insira o valor da renda',
-                        border: InputBorder.none,
+                    decoration: CustomDropdownStyle.dropdownDecoration(),
+                    child: DropdownButtonHideUnderline(
+                      child: CustomDropdownStyle.dropdownButton(
+                        isExpanded: true,
+                        value: dropdownValue5,
+                        items: dropdownValuesMap5.entries
+                            .map((MapEntry<String, dynamic> entry) {
+                          return entry.key;
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownValue5 = newValue!;
+                          });
+                        },
                       ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          dropdownValue5 = newValue;
-                        });
-                      },
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 20.0),
               // sexto dropdown
-              const Text("Tipo de renda?"),
+              const Text("Grau de escolaridade?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -402,7 +394,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // sétimo dropdown
-              const Text("Grau de escolaridade?"),
+              const Text("Estado civil?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -433,7 +425,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // oitavo dropdown
-              const Text("Estado civil?"),
+              const Text("Tipo de moradia?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -464,7 +456,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // nono dropdown
-              const Text("Tipo de moradia?"),
+              const Text("Possue celular?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -496,7 +488,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo dropdown
-              const Text("Possui celular?"),
+              const Text("Possui telefone no trabalho?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -528,7 +520,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo primeiro dropdown
-              const Text("Possue telefone trabalho?"),
+              const Text("Possue telefone fixo?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -560,7 +552,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo segundo dropdown
-              const Text("Possui telefone fixo?"),
+              const Text("Possue email?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -592,7 +584,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo terceiro dropdown
-              const Text("Possui email?"),
+              const Text("Membros da familha?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -624,7 +616,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo quarto dropdown
-              const Text("Membros da familha?"),
+              const Text("Faixa etária?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -634,20 +626,20 @@ class _FormularioState extends State<FormularioModel> {
                       maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
                     padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: TextField(
-                      controller: _membrosFamiliaController,
-                      decoration: const InputDecoration(
-                        hintText: 'Insira o número de membros da família',
-                        border: InputBorder.none,
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (String newValue) {
+                    decoration: CustomDropdownStyle.dropdownDecoration(),
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      value: dropdownValue14,
+                      items: dropdownValuesMap14.entries
+                          .map((MapEntry<String, dynamic> entry) {
+                        return DropdownMenuItem<String>(
+                          value: entry.key,
+                          child: Text(entry.key),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
                         setState(() {
-                          dropdownValue14 = newValue;
+                          dropdownValue14 = newValue!;
                         });
                       },
                     ),
@@ -656,7 +648,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo quinto dropdown
-              const Text("Saldo meses?"),
+              const Text("Renda anual?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -666,20 +658,20 @@ class _FormularioState extends State<FormularioModel> {
                       maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
                     padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: TextField(
-                      controller: _saldoMesesController,
-                      decoration: const InputDecoration(
-                        hintText: 'Insira saldo mensal',
-                        border: InputBorder.none,
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (String newValue) {
+                    decoration: CustomDropdownStyle.dropdownDecoration(),
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      value: dropdownValue15,
+                      items: dropdownValuesMap15.entries
+                          .map((MapEntry<String, dynamic> entry) {
+                        return DropdownMenuItem<String>(
+                          value: entry.key,
+                          child: Text(entry.key),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
                         setState(() {
-                          dropdownValue15 = newValue;
+                          dropdownValue15 = newValue!;
                         });
                       },
                     ),
@@ -688,7 +680,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo sexto dropdown
-              const Text("Status?"),
+              const Text("Tempo de registro?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -720,7 +712,7 @@ class _FormularioState extends State<FormularioModel> {
               ),
               const SizedBox(height: 20.0),
               // décimo sétimo dropdown
-              const Text("Idade?"),
+              const Text("Tempo registrado?"),
               const SizedBox(height: 8.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -730,20 +722,20 @@ class _FormularioState extends State<FormularioModel> {
                       maxWidth: MediaQuery.of(context).size.width - 20.0,
                     ),
                     padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: TextField(
-                      controller: _idadeController,
-                      decoration: const InputDecoration(
-                        hintText: 'Insira sua idade',
-                        border: InputBorder.none,
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (String newValue) {
+                    decoration: CustomDropdownStyle.dropdownDecoration(),
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      value: dropdownValue17,
+                      items: dropdownValuesMap17.entries
+                          .map((MapEntry<String, dynamic> entry) {
+                        return DropdownMenuItem<String>(
+                          value: entry.key,
+                          child: Text(entry.key),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
                         setState(() {
-                          dropdownValue17 = newValue;
+                          dropdownValue17 = newValue!;
                         });
                       },
                     ),
@@ -751,38 +743,7 @@ class _FormularioState extends State<FormularioModel> {
                 ],
               ),
               const SizedBox(height: 20.0),
-              // décimo oitavo dropdown
-              const Text("Dias empregado?"),
-              const SizedBox(height: 8.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width - 20.0,
-                    ),
-                    padding: const EdgeInsets.all(5.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: TextField(
-                      controller: _diasEmpregadoController,
-                      decoration: const InputDecoration(
-                        hintText: 'Insira quantos dias empregado',
-                        border: InputBorder.none,
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          dropdownValue18 = newValue;
-                        });
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20.0),
+              
               ElevatedButton(
                 onPressed: () {
                   // Handle form submission
@@ -793,13 +754,14 @@ class _FormularioState extends State<FormularioModel> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomeScreen()));
+                          builder: (context) =>
+                              const RotationTransitionDemo()));
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 15.0),
                 ),
-                child: const Text('Submit'),
+                child: const Text('Analisar'),
               ),
             ],
           ),

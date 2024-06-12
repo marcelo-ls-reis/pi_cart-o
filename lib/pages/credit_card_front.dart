@@ -27,7 +27,7 @@ class CreditCardFront extends StatelessWidget {
           const SizedBox(height: 20),
           Text(
             cardNumber,
-            style: const TextStyle(fontSize: 30, color: Colors.white),
+            style: const TextStyle(fontSize: 25, color: Colors.white),
           ),
           const SizedBox(height: 20),
           Row(
